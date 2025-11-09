@@ -9,6 +9,10 @@ Built with **TypeScript**, **Prisma**, **NextAuth**, and **Tailwind CSS**, this 
 [View Live on Vercel](https://quotes-api-five.vercel.app)
 
 ---
+## 🖼️ Preview
+![](./quotes-api.png)
+
+---
 
 ## 🎯 Purpose
 This project was created to practice **backend integration within a modern Next.js application** — exploring database design, authentication, and API route handling with Prisma ORM.  
