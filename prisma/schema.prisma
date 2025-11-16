@@ -5,6 +5,7 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../generated/prisma"
 }
 
 model User {
@@ -15,8 +16,14 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  // Optional for WebAuthn support
-  Authenticator Authenticator[]
+  passwordHash  String?
+  role          Role            @default(USER)
+  authenticator Authenticator[]
+
+  // Quote-related relations
+  quotes   Quote[]
+  likes    Like[]
+  comments Comment[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -61,7 +68,6 @@ model VerificationToken {
   @@id([identifier, token])
 }
 
-// Optional for WebAuthn support
 model Authenticator {
   credentialID         String  @unique
   userId               String
@@ -77,12 +83,60 @@ model Authenticator {
   @@id([userId, credentialID])
 }
 
-model quote {
-  id        Int      @id @default(autoincrement())
-  content   String   @unique
-  author    String
-  source    String
-  // tags      String[]
+model Quote {
+  id       String  @id @default(cuid())
+  content  String
+  author   String // Original author of the quote (e.g., "Albert Einstein")
+  source   String?
+  isPublic Boolean @default(false)
+  // tags   String[]
+
+  // User who added this quote to their collection
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Social features
+  likes    Like[]
+  comments Comment[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([isPublic])
+}
+
+model Like {
+  id      String @id @default(cuid())
+  userId  String
+  quoteId String
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quote Quote @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([userId, quoteId]) // A user can only like a quote once
+  @@index([quoteId])
+}
+
+model Comment {
+  id      String @id @default(cuid())
+  content String
+  userId  String
+  quoteId String
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quote Quote @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([quoteId])
+  @@index([userId])
+}
+
+enum Role {
+  USER
+  ADMIN
 }
