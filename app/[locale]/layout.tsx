@@ -12,12 +12,6 @@ import { getDictionary } from '@/lib/get-dictionary'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-	title: 'Quote Manager',
-	description: 'Quote Manager App Created with next.js',
-	keywords: ['quotes', 'quotes app', 'quote manager', 'quote collection']
-}
-
 export async function generateMetadata({ params }: { params: { locale: string } }) {
 	const { locale } = params
 	const dictionary = await getDictionary(locale)
