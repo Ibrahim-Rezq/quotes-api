@@ -1,0 +1,17 @@
+'use client'
+import { useEffect } from 'react'
+import { I18nextProvider } from 'react-i18next'
+import i18n from '@/lib/i18n'
+
+interface I18nClientProps {
+	children: React.ReactNode
+	locale: string
+}
+
+export default function I18nClient({ children, locale }: I18nClientProps) {
+	useEffect(() => {
+		if (locale) i18n.changeLanguage(locale).catch(() => {})
+	}, [locale])
+
+	return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+}
