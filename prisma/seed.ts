@@ -1,4 +1,4 @@
-import { saltAndHashPassword } from '@/lib/password'
+import { saltAndHashPassword } from '../lib/password'
 import prisma from '../lib/db'
 
 async function main() {

@@ -38,3 +38,7 @@ next-env.d.ts
 /generated/prisma
 
 /misc
+bun.lockb
+yarn.lock
+package-lock.json
+.pnpm-debug.log*
