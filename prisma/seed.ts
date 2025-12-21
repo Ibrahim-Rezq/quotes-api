@@ -14,7 +14,7 @@ async function main() {
 		create: {
 			email: 'demo@quotes.com',
 			name: 'Demo User',
-			passwordHash: saltAndHashPassword('demo123'),
+			passwordHash: await saltAndHashPassword('demo123'),
 
 			emailVerified: new Date()
 		}
