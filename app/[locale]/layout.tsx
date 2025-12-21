@@ -9,6 +9,7 @@ import { i18nConfig } from '@/config/i18nConfig'
 import I18nClient from '@/components/i18n-client'
 import { Toaster } from 'sonner'
 import { getDictionary } from '@/lib/get-dictionary'
+import { Analytics } from '@vercel/analytics/next'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -69,6 +70,7 @@ export default async function LocaleLayout({ children, params }: Readonly<Locale
 						<Toaster richColors position="top-right" />
 					</I18nClient>
 				</ThemeProvider>
+				<Analytics />
 			</body>
 		</html>
 	)
