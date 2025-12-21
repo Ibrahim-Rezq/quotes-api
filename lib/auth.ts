@@ -2,7 +2,7 @@ import NextAuth from 'next-auth'
 import GitHub from 'next-auth/providers/github'
 import Credentials from 'next-auth/providers/credentials'
 import { PrismaClient } from '@/generated/prisma'
-import { saltAndHashPassword } from './password'
+import { comparePassword, saltAndHashPassword } from './password'
 
 const prisma = new PrismaClient()
 
@@ -43,7 +43,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 							passwordHash: true
 						}
 					})
-
+					console.log('Found user:', user)
 					if (!user) {
 						try {
 							user = await prisma.user.create({
@@ -68,7 +68,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 							throw new Error('Failed to create user account.')
 						}
 					} else {
-						if (!user.passwordHash || pwHash !== user.passwordHash) {
+						console.log('Verifying password for user:', user)
+						const isPasswordValid = await comparePassword(password, user.passwordHash!)
+						console.log('Provided password hash:', isPasswordValid)
+						if (!user.passwordHash || !isPasswordValid) {
 							throw new Error('Invalid credentials.')
 						}
 					}
