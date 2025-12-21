@@ -6,17 +6,22 @@ Built with **TypeScript**, **Prisma**, **NextAuth**, and **Tailwind CSS**, this 
 ---
 
 ## 🌐 Live Demo
+
 [View Live on Vercel](https://quotes-api-five.vercel.app)
 
 ---
+
 ## 🖼️ Preview
-![](./quotes-api.png)
+
+![](./screenshot.png)
 
 ---
 
 ## 🎯 Purpose
+
 This project was created to practice **backend integration within a modern Next.js application** — exploring database design, authentication, and API route handling with Prisma ORM.  
 The current version focuses on:
+
 - Creating and managing quote entries via the database
 - Authentication setup using **NextAuth.js** with **Prisma Adapter**
 - Email integration using **Nodemailer**
@@ -25,7 +30,9 @@ The current version focuses on:
 ---
 
 ## 💡 Learning Takeaways
+
 Working on this project helped me:
+
 - Understand **Prisma schema design** and **database migrations**
 - Integrate **NextAuth** with a Prisma backend
 - Manage **environment variables** securely through `.env` files
@@ -35,6 +42,7 @@ Working on this project helped me:
 ---
 
 ## 🧩 Technologies Used
+
 - **Next.js 14**
 - **TypeScript**
 - **Prisma ORM**
@@ -48,21 +56,22 @@ Working on this project helped me:
 
 ## ⚙️ API Endpoints
 
-| Method | Endpoint             | Description |
-|--------|----------------------|--------------|
-| `GET`  | `/api/quotes`        | Fetch all quotes |
-| `GET`  | `/api/quotes/[id]`   | Get a single quote by ID |
-| `POST` | `/api/quotes`        | Add a new quote |
-| `DELETE` | `/api/quotes/[id]` | Delete a quote |
-| `PUT`  | `/api/quotes/[id]`   | Update an existing quote |
+| Method   | Endpoint           | Description              |
+| -------- | ------------------ | ------------------------ |
+| `GET`    | `/api/quotes`      | Fetch all quotes         |
+| `GET`    | `/api/quotes/[id]` | Get a single quote by ID |
+| `POST`   | `/api/quotes`      | Add a new quote          |
+| `DELETE` | `/api/quotes/[id]` | Delete a quote           |
+| `PUT`    | `/api/quotes/[id]` | Update an existing quote |
 
-*(Endpoints are subject to change as new features are implemented.)*
+_(Endpoints are subject to change as new features are implemented.)_
 
 ---
 
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/Ibrahim-Rezq/quotes_api.git
 cd quotes_api
@@ -137,15 +146,15 @@ App runs on [http://localhost:3000](http://localhost:3000)
 
 ## 🗺️ Roadmap / To-Do
 
-* [ ] Improve dashboard UI for managing quotes (add/edit/delete)
-* [ ] Implement role-based access for multiple users
-* [ ] Add “public” and “private” quote options
-* [ ] Allow users to **comment on quotes**
-* [ ] Introduce **sharing functionality** for quotes
-* [ ] Enhance quote display and search UX
-* [ ] Refine email templates for authentication and notifications
+- [ ] Improve dashboard UI for managing quotes (add/edit/delete)
+- [ ] Implement role-based access for multiple users
+- [ ] Add “public” and “private” quote options
+- [ ] Allow users to **comment on quotes**
+- [ ] Introduce **sharing functionality** for quotes
+- [ ] Enhance quote display and search UX
+- [ ] Refine email templates for authentication and notifications
 
-*(Future vision: evolve into a “mini Goodreads for quotes” — a social platform for discovering, saving, and discussing memorable lines.)*
+_(Future vision: evolve into a “mini Goodreads for quotes” — a social platform for discovering, saving, and discussing memorable lines.)_
 
 ---
 
@@ -172,4 +181,3 @@ Created by [**Ibrahim Rezq**](https://github.com/Ibrahim-Rezq) as part of a full
 ## ⚖️ License
 
 This project is licensed under the **MIT License** — feel free to use, modify, and build upon it.
-
