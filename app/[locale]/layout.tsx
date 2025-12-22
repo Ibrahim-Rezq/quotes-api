@@ -12,14 +12,26 @@ import { getDictionary } from '@/lib/get-dictionary'
 import { Analytics } from '@vercel/analytics/next'
 
 const inter = Inter({ subsets: ['latin'] })
+const getBaseUrl = () => {
+	if (process.env.NEXT_PUBLIC_SITE_URL) {
+		return process.env.NEXT_PUBLIC_SITE_URL
+	}
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-	const { locale } = params
+	if (process.env.VERCEL_URL) {
+		return `https://${process.env.VERCEL_URL}`
+	}
+
+	return 'http://localhost:3000'
+}
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+	const { locale } = await params
 	const dictionary = await getDictionary(locale)
 	const title = dictionary?.branding?.name ?? 'Quote Manager'
 	const description = dictionary?.landing?.ctaDescription ?? 'Save, organize, and share your favorite quotes.'
+	const metadataBase = new URL(getBaseUrl())
 
 	return {
+		metadataBase,
 		title,
 		description,
 		keywords: ['quotes', 'quotes app', 'quote manager', 'quote collection'],

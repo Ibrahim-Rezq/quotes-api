@@ -2,13 +2,12 @@
 
 import { Button } from '@/components/ui/button'
 import { ArrowLeft } from 'lucide-react'
-import { useRouter } from 'next/compat/router'
+import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 
 function NavigateBackBtn() {
 	const router = useRouter()
 	const { t } = useTranslation()
-
 	return (
 		<Button
 			variant="outline"

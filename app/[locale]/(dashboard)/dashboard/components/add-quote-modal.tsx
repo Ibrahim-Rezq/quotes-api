@@ -115,12 +115,12 @@ export function CreateQuoteModal({ userId }: CreateQuoteModalProps) {
 	return (
 		<Dialog open={open} onOpenChange={handleOpenChange}>
 			<DialogTrigger asChild>
-				<Button className="bg-primary text-white rounded-[6px] flex items-center gap-2 rtl:flex-row-reverse">
+				<Button variant="outline">
 					<PlusCircle className="me-2 h-4 w-4 rtl:-scale-x-100" />
 					{t('addQuote.addButton')}
 				</Button>
 			</DialogTrigger>
-			<DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+			<DialogContent className="">
 				<DialogHeader>
 					<DialogTitle className="flex items-center gap-2">
 						<Quote className="h-5 w-5" />
