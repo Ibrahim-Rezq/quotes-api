@@ -118,14 +118,12 @@ export function EditQuoteModal({ quote, trigger }: EditQuoteModalPropsExtended) 
 	return (
 		<Dialog open={open} onOpenChange={handleOpenChange}>
 			<DialogTrigger asChild>
-				{trigger ?? (
-					<Button variant="default" size="sm" className="flex-1 flex items-center gap-2 rtl:flex-row-reverse">
-						<Edit className="me-2 h-4 w-4 rtl:-scale-x-100" />
-						{t('navigation.edit')}
-					</Button>
-				)}
+				<Button variant="default" size="sm" className="flex-1 flex items-center gap-2 rtl:flex-row-reverse">
+					<Edit className="me-2 h-4 w-4 rtl:-scale-x-100" />
+					{t('navigation.edit')}
+				</Button>
 			</DialogTrigger>
-			<DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+			<DialogContent className="sm:max-w-lg max-w-2xl">
 				<DialogHeader>
 					<DialogTitle className="flex items-center gap-2">
 						<Quote className="h-5 w-5" />

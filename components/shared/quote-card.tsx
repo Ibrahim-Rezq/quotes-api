@@ -56,13 +56,9 @@ export async function QuoteCard({ quote, author, tags = [], userName, isPublic, 
 
 				{isPublic !== undefined && (
 					<div className="absolute inset-y-3 inset-inline-end-3">
-						<span
-							className={`inline-flex items-center px-2 py-1 rounded text-sm uppercase ${
-								isPublic ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'
-							}`}
-						>
+						<Badge variant={isPublic ? 'secondary' : 'default'}>
 							{isPublic ? statusPublic : statusPrivate}
-						</span>
+						</Badge>
 					</div>
 				)}
 

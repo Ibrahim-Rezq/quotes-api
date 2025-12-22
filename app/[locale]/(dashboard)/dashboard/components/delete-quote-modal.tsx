@@ -57,16 +57,10 @@ export function DeleteQuoteModal({ quoteId, quoteText, trigger }: DeleteQuoteMod
 	return (
 		<AlertDialog open={open} onOpenChange={setOpen}>
 			<AlertDialogTrigger asChild>
-				{trigger ?? (
-					<Button
-						variant="destructive"
-						size="sm"
-						className="flex-1 flex items-center gap-2 rtl:flex-row-reverse"
-					>
-						<Trash2 className="me-2 h-4 w-4 rtl:-scale-x-100" />
-						{t('navigation.delete')}
-					</Button>
-				)}
+				<Button variant="destructive" size="sm" className="flex-1 flex items-center gap-2 rtl:flex-row-reverse">
+					<Trash2 className="me-2 h-4 w-4 rtl:-scale-x-100" />
+					{t('navigation.delete')}
+				</Button>
 			</AlertDialogTrigger>
 			<AlertDialogContent>
 				<AlertDialogHeader>
@@ -96,7 +90,7 @@ export function DeleteQuoteModal({ quoteId, quoteText, trigger }: DeleteQuoteMod
 							handleDelete()
 						}}
 						disabled={isPending}
-						className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+						className="bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90"
 					>
 						{isPending ? t('deleteQuote.deleting') : t('deleteQuote.deleteAction')}
 					</AlertDialogAction>

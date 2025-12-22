@@ -116,35 +116,8 @@ export default async function Dashboard({ params }: DashboardPageProps) {
 									userName={quote.user.name}
 									isPublic={quote.isPublic}
 								>
-									<div className="flex justify-end rtl:justify-start">
-										<div className="relative">
-											<div className="inline-block">
-												<details className="relative">
-													<summary className="cursor-pointer px-2 py-1">⋮</summary>
-													<div className="absolute inset-inline-end-0 mt-2 w-40 rounded-md border bg-popover p-1 shadow-md">
-														<EditQuoteModal
-															quote={quote}
-															trigger={
-																<button className="w-full text-start px-3 py-2 text-sm">
-																	{dictionary?.dashboard?.editQuote ?? 'Edit Quote'}
-																</button>
-															}
-														/>
-														<DeleteQuoteModal
-															quoteId={quote.id}
-															quoteText={quote.quoteText}
-															trigger={
-																<button className="w-full text-start px-3 py-2 text-sm text-destructive">
-																	{dictionary?.dashboard?.deleteQuote ??
-																		'Delete Quote'}
-																</button>
-															}
-														/>
-													</div>
-												</details>
-											</div>
-										</div>
-									</div>
+									<EditQuoteModal quote={quote} />
+									<DeleteQuoteModal quoteId={quote.id} quoteText={quote.quoteText} />
 								</QuoteCard>
 							))}
 						</div>
