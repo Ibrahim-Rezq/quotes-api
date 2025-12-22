@@ -42,3 +42,4 @@ bun.lockb
 yarn.lock
 package-lock.json
 .pnpm-debug.log*
+config.bat
